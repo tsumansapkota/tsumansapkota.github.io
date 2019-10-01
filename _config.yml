@@ -130,7 +130,7 @@ navigation_header:
 #   url: https://github.com/daviddarnes/alembic
 
 navigation_footer:
-- title: "Suman Sapkota, Email: natokpas@gmail.com"
+- title: "Suman Sapkota, Email: snatokpas@gmail.com"
   url: natokpas@gmail.com
 
 social_links: # Appears in sidebar. Set the urls then uncomment and comment out as desired
