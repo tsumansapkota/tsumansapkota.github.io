@@ -3,7 +3,7 @@ title: Exploring Linear Regression
 categories:
 - Algorithm
 excerpt: |
-  Linear Regression is the simplest Machine Learning Algorithm and is fundamental to other algorithms such as Polynomial Regression and Neural Networks. Here, we explore the questions (What||Why||Where||How) of Linear Regression.
+  Linear Regression is the simplest Machine Learning Algorithm and is fundamental to other algorithms such as Polynomial Regression and Neural Networks. Here, we explore the questions (What/Why/Where/How) of Linear Regression.
 feature_text: | 
   ## Linear Regression 
   The fundamental Machine Learning Algorithm.
