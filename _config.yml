@@ -69,7 +69,8 @@ collections:
     comments: false
     description: "Personal Projects and Experiments, presented as a series of Blog Posts" # The post list page content
     feature_text: |
-      Welcome to the Rough AI Blog 
+      ## Blog Posts
+      Welcome to the Rough AI Blog. 
     feature_image: "https://picsum.photos/2560/600?image=866"
 
 # 6. Jekyll collections settings
