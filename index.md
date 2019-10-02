@@ -10,8 +10,7 @@ excerpt: "Rough AI is a Machine Learning Blog. Here, I post about Machine Learni
 Rough AI is a Machine Learning Blog. Here, I post about Machine Learning Algorithms and Projects.
 
 
-### Author
-#### Suman Sapkota
+##### Author: Suman Sapkota
 I am a Machine Learning Enthusiast. I learn online, code and write about it. Feel free to connect with me on following platforms.
 
 {% include button.html text="Github" icon="github" link="https://github.com/tsumansapkota" color="#0366d6" %} {% include button.html text="Twitter" icon="twitter" link="https://twitter.com/SapkotaTsuman" color="#0d94e7" %} {% include button.html text="LinkedIn" icon="linkedin" link="https://www.linkedin.com/in/suman-sapkota-491732170" %} {% include button.html text="Email: natokpas@gmail.com" icon="email" link="mailto:natokpas@gmail.com" color="#333333" %}
