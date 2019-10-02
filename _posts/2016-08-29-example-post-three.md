@@ -2,8 +2,10 @@
 title: Description of a Pot Still
 categories:
 - General
-excerpt: |
+excerpt:
   {% include figure.html image="https://picsum.photos/600/800?image=894" caption="Image with caption" width="300" height="800" %}
+  |
+
   A pot still is a type of still used in distilling spirits such as whisky or brandy. Heat is applied directly to the pot containing the wash (for whisky) or wine (for brandy).
 feature_text: |
   ## The Pot Still
