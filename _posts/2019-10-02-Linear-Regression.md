@@ -12,6 +12,6 @@ image: "https://picsum.photos/2560/600?image=733"
 ---
 
 Lets start with a data to work with.
-{% include figure.html image="assets/post_images/linear-regression/data_set.svg" position="left" height="400" caption="Fig: X vs y plot of dataset"}
+{% include figure.html image="assets/post_images/linear-regression/data_set.svg" position="left" height="400" caption="Fig: X vs y plot of dataset" %}
 ##### What does linear regression do ?
 Linear Regression
