@@ -152,7 +152,7 @@ Linear Regression can only learn straight line. It can only approximate highly l
 
 ### Linear Regression using Linear Algebra
 
-We can formulate the linear equation in terms of matrices. Equation of lines and planes can be represented as below,
+We can formulate the [system of linear equations](https://en.wikipedia.org/wiki/System_of_linear_equations#Matrix_equation) in terms of matrices (and/or vectors). Equation of line or plane can be represented as below,
 
 $$\textbf{Y} = \textbf{X . W} \tag{6}$$ 
 
@@ -200,7 +200,7 @@ Here, each row represents each output given each input and each column represent
 
 This looks complicated, but it is the easiest to work with. We must be careful with the dimensions of the matrix and what each elements represent in the matrix. This makes our problem highly organized and easy to solve.
 
-##### How does the matrix look like for our 2D data ?
+##### What does the matrix look like for our 2D data ?
 
 This is how the matrices look like for our previously used 2D dataset.
 
@@ -295,6 +295,11 @@ This is also the same as what we predicted using equation of line. We don't even
 The method is still the same for finding the **W** matrix as well as predicting on new examples. Only the input matrix and output matrix will be changed. The size of the matrices are directly determined by the dimensions of input and output variables.
 
 
+### Linear Regression using Gradient Descent
+
+We can find the parameters of the line that best fits the data using recursve search algorithm called as gradient descent. Gradient descent is used for all searching parameters in various type of machine learning algorithms including Linear Regression, SVM and Neural Network.
+
+The objective of this algorithm is the same as that of Least Squares Regression, i.e. to find the parameters that minimizes the error. In least squares method, we solved for the parameters using analytical method. Here, we find the parameters using numerical computation and search based method.
 
 
 
