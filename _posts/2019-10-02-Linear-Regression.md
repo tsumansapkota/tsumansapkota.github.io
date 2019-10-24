@@ -119,7 +119,7 @@ $$
 Using the equation (4) and (5), we can find the line parameters $$m$$ and $$c$$, given data points $$(x_{i}, y_{i})$$ for i = 0 ... n-1, to best fit the data.
 
 When applied this formula to our dataset, we get:   
-**<center>m = 0.3376, c = 0.7393 and E = 0.04509</center>**
+**<center>m = 0.3376, c = 0.7393 and E = 0.00203326</center>**
 
 The plot of the line that best fits the data is as follows:
 
@@ -297,9 +297,110 @@ The method is still the same for finding the **W** matrix as well as predicting 
 
 ### Linear Regression using Gradient Descent
 
-We can find the parameters of the line that best fits the data using recursve search algorithm called as gradient descent. Gradient descent is used for all searching parameters in various type of machine learning algorithms including Linear Regression, SVM and Neural Network.
+We can find the parameters of the line that best fits the data using recursve search algorithm called as gradient descent. Gradient descent is used for searching parameters in various type of machine learning algorithms including Linear Regression, SVM and Neural Network.
 
-The objective of this algorithm is the same as that of Least Squares Regression, i.e. to find the parameters that minimizes the error. In least squares method, we solved for the parameters using analytical method. Here, we find the parameters using numerical computation and search based method.
+Before getting into gradient descent, lets first explore how to find the parameters using simple search technique. There are various search methods such as random search, grid search, Bayesian optimization, etc. We will look at random search method for basic understanding of how parameters can be seached.
 
+##### Random Search
 
+We can search for the parameters m and b of the linear equation $$y=mx+c$$, randomly in some intervals. We know that the value of slope(m) can take value anywhere between $$\pm0$$ to $$\pm\infty$$. To make the search method simple and bounded in small range, we search the value of slope using the angle $$\theta$$, such that $$m = \tan{\theta}$$ where, $$\theta$$ = $$0$$ to $$\pi$$. We can search for m using random theta in this range. Now, for the parameter c, we search between minimum and maximum values of y. This is because we have all data centered around $$x=0$$. In our case, we search for the value of b in range 0.425 to 0.909.
+
+Lets get started with this search method. We will search randomly for $$10^{5}$$ values of $$m$$ and $$b$$ each in their respective range. We will save the value of m and b for which the error $$E(m,b)$$ is minimum. 
+
+With this search, we got $$m=0.3335$$ and $$c=0.73878$$ which is very close to the original value of $$m = 0.3376$$ and $$c = 0.7393$$. The error of the model with this parameter is $$E=0.002034945$$ which is slightly greater than the optimal(minimum) value of $$0.00203326$$.
+
+The plot of the line searched using random search method is as follows:
+
+{% include figure.html image="/assets/post_images/linear-regression/regression_rs.svg" position="center" height="400" caption="Fig: x vs y plot of data and predicted line" %}
+
+This method is working, but it is very inefficient when the number of parameters grow. It would be great if we could search for the parameters more efficiently, even when the number of parameters of the model increases. This is where the gradient descent search method shines at. If we could compute the gradient of the error function with respect to the parameters, we could easily search for the parameters by travelling in the opposite direction of gradient recursively. Lets see how we can use gradient descent to find the optimal value of parameters of our linear regression method.
+
+#### Gradient Descent Search
+
+The objective of gradient descent algorithm is the same as that of Least Squares Regression, i.e. to find the parameters that minimizes the error. In least squares method, we solved for the parameters using analytical method. Here, we find the parameters using numerical computation and search based method.
+
+Let us begin with the equation of line $$y=f(x)=mx+c$$. We want to optimize the parameters m and c to have the minimum error. At first, we need to initialize the parameters to some random values, so that we can calculate the error and further calculate the gradient(required change) of the parameters to reduce the error. The solution is optimal if the gradient is zero, i.e. the error function is minimized.
+
+##### How do we get the gradient of the parameters ?
+
+The gradient should be calculated for current values of parameters using the derrivative of error function $$E(m,c)$$ with respect to the parameters m and b. 
+
+We can compute the outputs for all inputs given current values of m and c according to the equation: $$\hat{y}_{i} = mx_{i} + c$$.   
+The Mean Squared Error for the model can be computed as:
+
+$$E=\frac{1}{2n}\sum_{i=0}^{n-1} (\hat{y}_{i} - y_{i})^2 \tag{8}$$
+
+[This is modified Mean Squared Error. The error is divided by 2 such that the derrivative does not have 2 as constant.]
+
+$$E(m,c)=\frac{1}{2n}\sum_{i=0}^{n-1} (mx_{i} + c - y_{i})^2$$
+
+First, lets find the gradient of the Error function with respect to the parameter m,
+
+$$
+\begin{align*}
+  \frac{dE(m,c)}{dm}&=\frac{1}{2n}\sum_{i=0}^{n-1} 2(mx_{i} + c - y_{i}).x_{i} \\
+  \Delta m&=\frac{1}{n}\sum_{i=0}^{n-1} (\hat{y}_{i} - y_{i}).x_{i}\\
+  \Delta m&=\frac{1}{n}\sum_{i=0}^{n-1} \Delta y_{i}.x_{i} \tag{9}
+\end{align*}
+$$
+
+Again, lets find the gradient of the Error function with respect to the parameter c,
+
+$$
+\begin{align*}
+  \frac{dE(m,c)}{dc}&=\frac{1}{2n}\sum_{i=0}^{n-1} 2(mx_{i} + c - y_{i}).x_{i} \\
+  \Delta c&=\frac{1}{n}\sum_{i=0}^{n-1} (\hat{y}_{i} - y_{i}).1\\
+  \Delta c&=\frac{1}{n}\sum_{i=0}^{n-1} \Delta y_{i} \tag{10}
+\end{align*}
+$$
+
+##### How do we change the parameters ?
+
+We have derrived the formula to compute the gradient of the Error function w.r.t the parameters m and c. According to the gradient descent, changing the parameters in the opposite direction of the gradient leads to decrease in the value of that function (Error function in our case). 
+
+We change the parameters of the function as follows:   
+
+$$ m = m - \alpha.\Delta m \tag{11}$$
+
+$$ c = c - \alpha.\Delta c \tag{12}$$
+
+Where, $$\alpha < 1 $$ is the scalar value that limits the step size of the update in each iteration. It is also called learning rate. We will take $$\alpha = 0.1$$ for our model.
+
+If we do this recursively, it will lead to the values of the parameter that minimizes that function. We may not get gradient equal to zero. In practice, we stop the recursion when the change in value of error is sufficiently small (eg. below threshold of $$10^{-4}$$).
+
+##### Algorithm
+
+Step 1. Initialize $$E = 10^{10}$$(large number) and $$\epsilon=10^{-10}$$ (small number)   
+Step 2. Initialize the parameter $$m$$ and $$c$$ to some random values.   
+Step 3. $$E_{prev} = E$$   
+Step 4. Compute the output $$\hat{y}_{i} = mx_{i} + c$$, for i = 0 to n-1   
+Step 5. Compute the error $$E$$ according to equation (8)   
+Step 6. Compute the gradients $$\Delta m$$ and $$\Delta c$$ according to equation (9) and (10)   
+Step 7. Update the parameters $$m$$ and $$c$$ according to equation (11) and (12)   
+Step 8. Repeat Step 3 to 7 until $$(E_{prev} - E) < \epsilon$$
+
+##### Visualization
+
+We can visualize this algorithm with our dataset. Gradient Descent moves the line closer and closer to the optimal solution in each iteration. Following is the visualization of gradient descent optimizing the linear function.
+
+{% include figure.html image="/assets/post_images/linear-regression/regression_gd_anim.gif" position="center" height="400" caption="Fig: x vs y plot of data and line predicted by gradient descent" %}
+
+We can see that the error value (E) decreases as parameters change towards the optimal values. After some steps of gradient descent search, the change in error value is negligible, hence it is considered optimal solution. With this method, we got $$m=0.33724$$ and $$c=0.7393$$ which is very close to the optimal value of $$m = 0.3376$$ and $$c = 0.7393$$. The Mean Squared Error(unmodified) of the model with this parameter is $$E=0.00203327$$, which is slightly greater than the optimal(minimum) value of $$0.00203326$$. But we can close the gap between searched parameter and optimal parameter by increasing the number of updates(iteration). 
+
+We can also visualize the Error function $$E(m,c)$$ with $$m$$ and $$c$$ as the input parameters and E as the output of the Error function. The current position(values) of the parameters $$m$$ and $$c$$ with their error value $$E$$ as well as the path taken by the Gradient Descent Algorithm to find the optimal parameters can also be plotted on the same figure. 
+
+{% include figure.html image="/assets/post_images/linear-regression/error_surface_gd.gif" position="center" height="400" caption="Fig: Error Plot of the Linear Regression optimization" %}
+
+This figure shows the Error function $$E(m,c)$$ and the values of parameters updated by the Gradient Descent Algorithm to find the Minimum value of the Error, i.e. to minimize the Error function. We can see that the parameters change such that the Error value reaches its minimum. The process of changing the parameters in opposite direction of their slope, to reach the minimum value of some function is called as Gradient Descent. It is easy to understand if we use the analogy of a ball rolling on some curved surface. The ball always moves towards the lowest height. Similarly, the value of the parameters move towards the lowest Error.   
+However, the 3D plot can only show the error function upto 2 parameters. Hence, for models with large number of parameters, we only plot the error value at different steps. Plot of error values helps us analyze if our model is learning properly. Following is the plot of the error values at various steps of gradient descent in our model. It also shows the minimum error value for our comparision.
+
+{% include figure.html image="/assets/post_images/linear-regression/error_plot_step.svg" position="center" height="400" caption="Fig: Error Plot of the Linear Regression optimization" %}
+
+##### Conclusion
+
+We went through the basics of Linear Regression. We have covered wide variety of topics surrounding Linear Regression. This algorithm is the foundation to understanding concepts such as: Model Optimization, Gradient Descent Algorithm and Backpropagation, (Hyper)Parameter Search Techniques, Role of Error function in Optimization, Curve Fitting, Analytic and Numerical Methods and Visualization. These concepts will be used on many other Machine Learning Algorithms.
+
+If someone is new to this topic, all these things may seem overwelming. We went through multiple ways of doing the same thing. This will be helpful to clarify the task at hand from different perspective. Understanding this topic will help us get into other topics such as Polynomial Regression, Logistic Regression, Non-Linear Regression, Neural Networks(MultiLayer Perceptron), etc. These topics will be covered in another blog post.
+
+This post may not have covered all the corners of the Linear Regression. There might be several jumps while explaining the topics which may not be clearly understood. After going through the details, there might be even more question and confusion. Please feel free to comment on the post, ask questions or give your feedback.
 

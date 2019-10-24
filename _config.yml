@@ -66,7 +66,7 @@ collections:
   posts:
     title: Posts # Needed for Siteleaf
     output: true
-    comments: false
+    comments: true
     description: "Personal Projects and Experiments, presented as a series of Blog Posts" # The post list page content
     feature_text: |
       ## Blog Posts
@@ -92,7 +92,7 @@ url: "" # Site url, also used in jekyll-seo-tag
 baseurl: ""
 repo: "https://github.com/tsumansapkota/tsumansapkota.github.io"
 email: "natokpas@gmail.com"
-# disqus: "alembic-1" # Blog post comments, uncomment the option and set the site ID from your Disqus account
+disqus: "tsumansapkota-github-io" # Blog post comments, uncomment the option and set the site ID from your Disqus account
 google_analytics: 'UA-150637206-1'
 # google_analytics_anonymize_ip: ''
 # service_worker: false # Will turn off the service worker if set to false
