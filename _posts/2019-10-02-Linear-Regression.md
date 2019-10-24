@@ -35,6 +35,10 @@ The error of the prediction -->
 
 Linear Regression is the simplest Machine Learning Algorithm and is fundamental to other algorithms such as Polynomial Regression, Logistic Regression and Neural Networks.
 
+
+Python (Jupyter) Notebook of Linear Regression is on this [Github Repository](https://github.com/tsumansapkota/Blog_Post/tree/master/01_Linear_Regression). You can also run the Notebook on [Google Collab](https://colab.research.google.com/github/tsumansapkota/Blog_Post/blob/master/01_Linear_Regression/00_Linear_Regression_Exploration.ipynb)
+
+
 ##### What does Linear Regression do ?
 Lets consider 2D data on xy plane (x-axis and y-axis). Linear Regression finds the line that best fits the data. The line is in the form of function $$y=f(x)=mx+c$$. Linear Regression is similar for nD (n-Dimensional) data as well, but we will focus on 2D data for now.
 
