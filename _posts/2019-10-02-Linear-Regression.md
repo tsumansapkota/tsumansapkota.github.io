@@ -7,8 +7,8 @@ excerpt: |
 feature_text: | 
   ## Linear Regression 
   The fundamental Machine Learning Algorithm.
-feature_image: "https://picsum.photos/2560/600?image=733"
-image: "https://picsum.photos/2560/600?image=733"
+feature_image: "/assets/post_images/linear-regression/regression_feature.svg"
+image: "/assets/post_images/linear-regression/regression_feature.svg" #"https://picsum.photos/2560/600?image=733"
 ---
 
 <!-- Linear Regression is the simplest Machine Learning Algorithm and is fundamental to other algorithms such as Polynomial Regression and Neural Networks. Linear regression finds the best line to fit the 2D data. In higher dimensions, Linear Regression finds the best nD Plane to fit the data. [Linear Regression](https://en.wikipedia.org/wiki/Linear_regression)
@@ -36,7 +36,7 @@ The error of the prediction -->
 Linear Regression is the simplest Machine Learning Algorithm and is fundamental to other algorithms such as Polynomial Regression, Logistic Regression and Neural Networks.
 
 
-Python (Jupyter) Notebook of Linear Regression is on this [Github Repository](https://github.com/tsumansapkota/Blog_Post/tree/master/01_Linear_Regression). You can also run the Notebook on [Google Collab](https://colab.research.google.com/github/tsumansapkota/Blog_Post/blob/master/01_Linear_Regression/00_Linear_Regression_Exploration.ipynb)
+*Python (Jupyter) Notebook of Linear Regression is on this [Github Repository](https://github.com/tsumansapkota/Blog_Post/tree/master/01_Linear_Regression). You can also run the Notebook on [Google Collab](https://colab.research.google.com/github/tsumansapkota/Blog_Post/blob/master/01_Linear_Regression/00_Linear_Regression_Exploration.ipynb)*
 
 
 ##### What does Linear Regression do ?
@@ -141,7 +141,7 @@ Let us consider an unseen input (say x=0.1). We can predict what would be the va
 $$
 \begin{align*}
   y &= mx + c \\
-  y &= 0.3376 * 0.1 + 0.7393 \\
+  y &= 0.3376 \times 0.1 + 0.7393 \\
   y &= 0.77306
 \end{align*}
 $$
