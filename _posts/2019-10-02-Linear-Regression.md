@@ -408,3 +408,13 @@ If someone is new to this topic, all these things may seem overwelming. We went 
 
 This post may not have covered all the corners of the Linear Regression. There might be several jumps while explaining the topics which may not be clearly understood. After going through the details, there might be even more question and confusion. Please feel free to comment on the post, ask questions or give your feedback.
 
+<script>
+    var headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+
+    for (var i = 0; i < headings.length; i++) {
+        headings[i].innerHTML =
+            '<a href="#' + headings[i].id + '" style="color : #242e2b;" >' +
+                headings[i].innerText +
+            '</a>';
+    }
+</script>
