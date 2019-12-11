@@ -5,6 +5,7 @@ feature_text: |
   Exploring Machine Learning Algorithms and Concepts.
 feature_image: "https://picsum.photos/1300/400?image=989"
 excerpt: "Rough AI is a Machine Learning Blog. Here, I post about Machine Learning Algorithms and Projects."
+layout: page
 ---
 
 Rough AI is a Machine Learning Blog. Here, I post about Machine Learning Algorithms and Projects.
