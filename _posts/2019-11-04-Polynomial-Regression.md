@@ -282,7 +282,7 @@ We previously used matrix inversion technique to find the parameters matrix ***A
 
 We have the equation,
 
-$$\boldsymbol{\hat{Y}} = \boldsymbol{X}.\boldsymbol{W} \tag{3}$$
+$$\boldsymbol{\hat{Y}} = \boldsymbol{X}.\boldsymbol{A} \tag{3}$$
 
 In gradient descent, we find the error and then find the gradient of the parameters with respect to *(w.r.t)* the error function.
 
