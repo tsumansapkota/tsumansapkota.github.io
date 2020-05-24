@@ -260,7 +260,7 @@ This concept is more intuitive when if we plot the train and test error curve. L
 
 ##### What is the best degree of polynomial to fit our dataset ?
 
-Let's use above mentioned method of using test dataset to determine the best degree of polynomial. For this, we need train dataset. Let us generate test dataset from same function as train dataset.
+Let's use above mentioned method of using test dataset to determine the best degree of polynomial. For this, we need test dataset. Let us generate test dataset from same function as train dataset.
 
 {% include figure.html image="/assets/post_images/polynomial-regression/train_test_data_set.svg" position="center" height="400" caption="Fig: x vs y plot of train, test dataset" %}
 
