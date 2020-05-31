@@ -21,6 +21,7 @@ I am a Machine Learning Enthusiast. I learn online, code and write about it. Fee
 Here are some great blogs that helped me on Machine Learning topics:
 
 - [deepnotes.io](https://deepnotes.io/)
+- [amitness.com](https://amitness.com/)
 - [wiseodd.github.io](https://wiseodd.github.io/techblog/)
 - [colah.github.io](http://colah.github.io/)
 - [kvfrans.com](http://kvfrans.com/)

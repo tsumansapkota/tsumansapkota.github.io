@@ -7,8 +7,8 @@ excerpt: |
 feature_text: | 
   ## Polynomial Regression 
   Easy way to fit non linear curve to the data.
-feature_image: "/assets/post_images/linear-regression/regression_feature.svg"
-image: "/assets/post_images/linear-regression/regression_feature.svg" #"https://picsum.photos/2560/600?image=733"
+feature_image: "/assets/post_images/polynomial-regression/poly_regression_feature.svg"
+image: "/assets/post_images/polynomial-regression/poly_regression_feature.svg" #"https://picsum.photos/2560/600?image=733"
 ---
 
 Polynomial Regression is the generalization of Linear Regression to polynomial function. In Linear Regression, we fit a straight line (i.e. $$y=f(x)=mx+c$$) to our dataset. Here, in Polynomial Regression, we fit a polynomial function of $$x$$ to the data. The polynomial function of $$x$$ is as follows:   
