@@ -36,7 +36,7 @@ The error of the prediction -->
 Linear Regression is the simplest Machine Learning Algorithm and is fundamental to other algorithms such as Polynomial Regression, Logistic Regression and Neural Networks.
 
 
-*Python (Jupyter) Notebook of Linear Regression is on this [Github Repository](https://github.com/tsumansapkota/Blog_Post/tree/master/01_Linear_Regression). You can also run the Notebook on [Google Collab](https://colab.research.google.com/github/tsumansapkota/Blog_Post/blob/master/01_Linear_Regression/00_Linear_Regression_Exploration.ipynb)*
+*Python (Jupyter) Notebook of Linear Regression is on this [Github Repository](https://github.com/tsumansapkota/Blog_Post/tree/master/01_Linear_Regression). You can also run the Notebook on [Google Collab](https://colab.research.google.com/github/tsumansapkota/Blog_Post/blob/master/01_Linear_Regression/01_Linear_Regression_Exploration-Anim.ipynb)*
 
 
 ##### What does Linear Regression do ?

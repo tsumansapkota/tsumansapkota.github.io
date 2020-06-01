@@ -16,7 +16,7 @@ $$y=f(x)=a_{0} + a_{1}x + a_{2}x^2 + \cdots + a_{n}x^n$$
 Where, $$a_{n}$$ is the coeffecient of order n and $$x^n$$ is the $$n^{th}$$ power of input $$x$$.
 
 *This post on Polynomial Regression heavily relies on the concept developed on [Linear Regression Post](/algorithm/2019/10/02/Linear-Regression/).    
-Python (Jupyter) Notebook of Polynomial Regression is on this [Github Repository](https://github.com/tsumansapkota/Blog_Post/tree/master/02_Polynomial_Regression). You can also run the Notebook on [Google Collab](https://colab.research.google.com/github/tsumansapkota/Blog_Post/blob/master/02_Polynomial_Regression/00_Polynomial_Regression_v0.ipynb)*
+Python (Jupyter) Notebook of Polynomial Regression is on this [Github Repository](https://github.com/tsumansapkota/Blog_Post/tree/master/02_Polynomial_Regression). You can also run the Notebook on [Google Collab](https://colab.research.google.com/github/tsumansapkota/Blog_Post/blob/master/02_Polynomial_Regression/01_Polynomial_Regression-Anim.ipynb)*
 
 
 ##### Why use Polynomial Regression ?

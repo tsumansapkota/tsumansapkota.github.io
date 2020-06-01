@@ -12,6 +12,8 @@ image: "/assets/post_images/neural-network-history/feature_nn.png"
 ---
 Artificial Neural Network (ANN) is one of the most popular Machine Learning Algorithm. As the name suggests, the algorithm tries to mimic the Biological Neural Network, i.e. the Brain. Although ANN does not function exactly like the brain, many features of ANN are inspired by the brain. To understand modern ANN algorithms, starting from the very beginning is a good idea. So, let us get into it starting from biological neurons first.
 
+*Python (Jupyter) Notebook used for this post and to generate GIFs is on this [Github Repository](https://github.com/tsumansapkota/Blog_Post/tree/master/03_Neural_Network_History). You can also run the Notebook on [Google Collab](https://colab.research.google.com/github/tsumansapkota/Blog_Post/blob/master/03_Neural_Network_History/00_Early_days.ipynb)*
+
 ##### Biological Neuron and Neural Network
 The term 'Neuron' was [introduced in 1891](https://blogs.scientificamerican.com/brainwaves/know-your-neurons-the-discovery-and-naming-of-the-neuron/). A neuron is the building block of the Nervous System (the Spinal cord and the Brain). The typical structure of the neuron is shown below.   
 [Image Credit](https://www.freepik.com/brgfx)
