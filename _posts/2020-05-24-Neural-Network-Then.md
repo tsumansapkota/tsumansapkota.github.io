@@ -152,7 +152,7 @@ Perceptron came with its own learning rule called Perceptron Learning Rule (PLR)
 The algorithm for training Perceptron is shown below.
 
 1. Initialize all weights to zero (or small random value)
-2. Randomly select one of the data points $$(x)$$ from the dataset.
+2. Randomly select one of the data points $$(\boldsymbol{x})$$ from the dataset.
 3. Compute the output of the neuron as:
 
 $$
@@ -245,6 +245,16 @@ Please feel free to comment on the post, ask questions or give feedback.
 <!-- https://youtu.be/wl7gVvI-HuY?list=PLl8OlHZGYOQ7bkVbuRthEsaLr7bONzbXS&t=1328 -->
 
 <!-- https://youtu.be/lkha188L4Gs?list=PLp-0K3kfddPwz13VqV1PaMXF6V6dYdEsj -->
+
+<!-- bernoulli distribution
+https://youtu.be/bT1p5tJwn_0 
+https://en.wikipedia.org/wiki/Bernoulli_distribution-->
+
+<!-- https://en.wikipedia.org/wiki/Logistic_regression#Model_fitting
+https://towardsdatascience.com/an-introduction-to-logistic-regression-8136ad65da2e
+https://math.stackexchange.com/questions/477207/derivative-of-cost-function-for-logistic-regression
+https://youtu.be/mLth3-4yn4Q
+ -->
 
 
 <script>
