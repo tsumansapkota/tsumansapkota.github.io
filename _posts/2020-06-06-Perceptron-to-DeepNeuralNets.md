@@ -419,8 +419,8 @@ $$
 $$b_2=b_2^{(0)} + b_2^{(1)} + \dots + b_2^{(M-1)}$$
 
 Here,   
-$$\boldsymbol{x} \in \mathbb{R}^{I} ;$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$\boldsymbol{W_1} \in \mathbb{R}^{I \times N} ;$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$\boldsymbol{b_1} \in \mathbb{R}^{N};$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$\boldsymbol{w_2} \in \mathbb{R}^{N};$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$b_2 \in \mathbb{R} ;$$   
-$$\boldsymbol{z^T} \in \mathbb{R}^{N} $$ denotes the row vector of hidden unit values.
+$$\boldsymbol{x} \in \mathbb{R}^{I} ;$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$\boldsymbol{W_1} \in \mathbb{R}^{I \times M} ;$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$\boldsymbol{b_1} \in \mathbb{R}^{M};$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$\boldsymbol{w_2} \in \mathbb{R}^{M};$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$b_2 \in \mathbb{R} ;$$   
+$$\boldsymbol{z^T} \in \mathbb{R}^{M} $$ denotes the row vector of hidden unit values.
 
 The diagram representation of MLP with 2 inputs, 3 hidden units and one output is shown below.
 
