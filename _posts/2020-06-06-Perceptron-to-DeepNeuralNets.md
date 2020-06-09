@@ -474,19 +474,19 @@ $$
 \begin{align}
 \text{Error } = E(\boldsymbol{\hat{Y}}, \boldsymbol{Y}) \\
 \text{Compute, } \Delta \boldsymbol{\hat{Y}} = \frac{dE}{d\boldsymbol{\hat{Y}}} \\
-\Delta \boldsymbol{b_2} = \frac{dE}{d\boldsymbol{b_2}} &= \frac{1}{M} \sum_{i=0}^{M}\Delta \boldsymbol{\hat{Y}}_{[:,i]} \\
+\Delta \boldsymbol{b_2} = \frac{dE}{d\boldsymbol{b_2}} &= \frac{1}{M} \sum_{i=0}^{M}\Delta \boldsymbol{\hat{Y}}_{[i,:]} \\
 \Delta \boldsymbol{W_2} = \frac{dE}{d\boldsymbol{W_2}} &= \frac{1}{M} \boldsymbol{A_1^T}.\Delta \boldsymbol{\hat{Y}} \\
 \Delta \boldsymbol{A_1} = \frac{dE}{d\boldsymbol{A_1}} &= \Delta \boldsymbol{\hat{Y}} . \boldsymbol{W_2^T} \\
 \Delta \boldsymbol{Z_1} = \frac{dE}{d\boldsymbol{Z_1}} &= f'(\boldsymbol{Z_1}) \odot \Delta \boldsymbol{A_1} \\
-\Delta \boldsymbol{b_1} = \frac{dE}{d\boldsymbol{b_1}} &= \frac{1}{M} \sum_{i=0}^{M}\Delta \boldsymbol{A}_{\boldsymbol{1}[:,i]} \\
+\Delta \boldsymbol{b_1} = \frac{dE}{d\boldsymbol{b_1}} &= \frac{1}{M} \sum_{i=0}^{M}\Delta \boldsymbol{A}_{\boldsymbol{1}[i,:]} \\
 \Delta \boldsymbol{W_1} = \frac{dE}{d\boldsymbol{W_1}} &= \frac{1}{M} \boldsymbol{X^T}.\Delta \boldsymbol{Z_1} \\
 \end{align}
 $$
 
 Here,    
 $$E(\boldsymbol{\hat{Y}}, \boldsymbol{Y})$$ is the error function,   
-$$\boldsymbol{\hat{Y}}_{[:,i]}$$ is the $$i^{th}$$ column of the matrix $$\boldsymbol{\hat{Y}}$$,   
-$$\boldsymbol{A}_{\boldsymbol{1}[:,i]}$$ is the $$i^{th}$$ column of the matrix $$\boldsymbol{A_1}$$,   
+$$\boldsymbol{\hat{Y}}_{[i,:]}$$ is the $$i^{th}$$ row of the matrix $$\boldsymbol{\hat{Y}}$$,   
+$$\boldsymbol{A}_{\boldsymbol{1}[i,:]}$$ is the $$i^{th}$$ row of the matrix $$\boldsymbol{A_1}$$,   
 $$\odot$$ represent the Hadamard product (elementwise multiplication between two matrix).
 
 Finally, Update parameters:
