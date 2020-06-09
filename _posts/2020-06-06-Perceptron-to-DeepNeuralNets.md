@@ -77,7 +77,7 @@ $$
 \end{align}
 $$
 
-Probability 1, $$(\hat{y} = 1)$$, means that the data point belongs to class '1' and probability 0 means that the data point does not belong to class '1' (hence belong to class '0'). The probability of 0.5 means the data point might belong to class '0' or class '1' equally. Hence this point can be regarded as the decision boundary. We can use other values for deciding the decision boundary as well. In medical application, if the classifier predicts the probability of having cancer, we might want probability > 0.7 to be more certain about the diagnosis.
+Probability 1, $$(\hat{y} = 1)$$, means that the data point belongs to class '1' and probability 0 means that the data point does not belong to class '1' (hence belongs to class '0'). The probability of 0.5 means the data point has 50/50 chance to be in class '0' or class '1'. Hence this point can be regarded as the decision boundary. We can use other threshold values for the decision boundary as well. In medical application, if the classifier predicts the probability of having cancer, we might want probability > 0.7 to be more certain about the diagnosis.
 
 Although we formulate the problem in terms of probability, we don't know the learning required for probability values. One solution is to sample to make a hard decision. This will predict noisy output around the decision boundary. The algorithm can then be simply trained as a (noisy) Perceptron.
  
@@ -142,7 +142,7 @@ The equations (3) and (4) can be written in a single formula as,
 
 $$P(y) = \hat{y}^y (1-\hat{y})^{(1-y)} \tag{4}$$
 
-Our goal is to output the correct probability value given the data. This means that we want to maximize the likelihood of the above function. Likelihood function measures how likely the given data points are likely to have come from the modelled probability distribution (equation 3 in our case).
+Our goal is to output the correct probability value given the data. This means that we want to maximize the likelihood of the above function. Likelihood function measures how likely are the given data points to have come from the modelled probability distribution (equation 3 in our case).
 
 For each data point $$\boldsymbol{x_i}$$,
 
@@ -426,7 +426,7 @@ The diagram representation of MLP with 2 inputs, 3 hidden units and one output i
 
 {% include figure.html image="/assets/post_images/perceptron-to-dnn/nn-2-3-1.svg" position="center" height="400" width="400" caption="Fig: Multilayer Perceptron Architecture with configuration [2,3,1]" %}
 
-Let us Multilayer Perceptron with 5 hidden units to learn a non-linear curve (1D to 1D) as shown below.
+Let us train a Multilayer Perceptron with 5 hidden units to learn a non-linear curve (1D to 1D) as shown below.
 
 {% include figure.html image="/assets/post_images/perceptron-to-dnn/non-linear-regression-mlp.gif" position="center" height="400" caption="Fig: Multilayer Perceptron learning a curve" %}
 
