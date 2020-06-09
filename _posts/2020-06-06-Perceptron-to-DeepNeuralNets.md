@@ -3,12 +3,12 @@ title: Perceptron to Deep-Neural-Network
 categories:
 - Algorithm
 excerpt: |
-  Journey From Perceptron to Deep Neural Networks in sequential fashion
+  Journey From Perceptron to Deep Neural Networks in sequential fashion. Start with Perceptron, move to Logistic Regression, Single Layer Neural Network, Multilayer Perceptron (1 hidden layer) and finally to Deep Neural Network. Understand the algorithm in sequential fashion along with visualization and math.
 feature_text: | 
   ##### Perceptron to Deep-Neural-Network 
   ###### The Road Less Travelled
-feature_image: "/assets/post_images/neural-network-history/feature_nn.png"
-image: "/assets/post_images/neural-network-history/feature_nn.png"
+feature_image: "/assets/post_images/perceptron-to-dnn/cover-NLR.svg"
+image: "/assets/post_images/perceptron-to-dnn/feature-NLR.svg"
 ---
 
 Neural Network is one of the most versatile Machine learning Algorithms. It has come a long way from early methods such as Perceptron. Many people jump directly into Deep Learning and face a problem understanding what exactly the algorithm is doing. It is useful to ignore the details by calling it a black box that just works. It is more useful to understand the details of its working for research and tinkering purpose.
@@ -486,7 +486,8 @@ $$
 Here,    
 $$E(\boldsymbol{\hat{Y}}, \boldsymbol{Y})$$ is the error function,   
 $$\boldsymbol{\hat{Y}}_{[:,i]}$$ is the $$i^{th}$$ column of the matrix $$\boldsymbol{\hat{Y}}$$,   
-$$\boldsymbol{A}_{\boldsymbol{1}[:,i]}$$ is the $$i^{th}$$ column of the matrix $$\boldsymbol{A_1}$$.
+$$\boldsymbol{A}_{\boldsymbol{1}[:,i]}$$ is the $$i^{th}$$ column of the matrix $$\boldsymbol{A_1}$$,   
+$$\odot$$ represent the Hadamard product (elementwise multiplication between two matrix).
 
 Finally, Update parameters:
 
@@ -558,7 +559,7 @@ Deep learning term is famous these days. It is a set of established techniques t
 
 ##### Conclusion
 
-In this post, we started from Perceptron and trying to improve its capability and improved until we developed the Deep Neural Network. The actual development of Deep Neural Networks did not happen exactly the same way. Still, these steps help to develop the concept in a sequential manner. Each next step adds to the capability of the algorithm. Learning this way can help try different ideas at different stages of development. Learning the modern Deep Learning algorithms can be too much for newcomers, too abstract and might be discouraging. This post aims to help readers understand the basic Neural Network algorithm and move onwards toward modern Deep Learning Techniques. Check out [Linear Regression]() and [Polynomial Regression]() to understand the basic of regresion.
+In this post, we started from Perceptron and trying to improve its capability and improved until we developed the Deep Neural Network. The actual development of Deep Neural Networks did not happen exactly the same way. Still, these steps help to develop the concept in a sequential manner. Each next step adds to the capability of the algorithm. Learning this way can help try different ideas at different stages of development. Learning the modern Deep Learning algorithms can be too much for newcomers, too abstract and might be discouraging. This post aims to help readers understand the basic Neural Network algorithm and move onwards toward modern Deep Learning Techniques. Check out [Linear Regression](/algorithm/2019/10/02/Linear-Regression/) and [Polynomial Regression](/algorithm/2019/11/04/Polynomial-Regression/) to understand the basic of regresion.
 
 Please feel free to comment on the post, ask questions or give feedback.
 
