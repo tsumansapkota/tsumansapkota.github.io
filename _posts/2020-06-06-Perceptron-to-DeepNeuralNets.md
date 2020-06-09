@@ -307,7 +307,7 @@ It does well and seems better than fitting a line. But still, if the top portion
 
 *Also, it seems that we need a special-shaped function for each dataset if we continue to follow this path. [Polynomial Regression](/algorithm/2019/11/04/Polynomial-Regression/) was much better than this, it was general.*
 
-We could improve on the regression by transforming data into higher dimension such as polynomial regression. The transformations generally include using a polynomial combination of variables. The variables (x1, x2) can be transformed to (x1, x2, x1^2, x2^2, x1x2, ... )
+We could improve on the regression by transforming data into higher dimension such as polynomial regression. The transformations generally include using a polynomial combination of variables. The variables $$(x_1, x_2)$$ can be transformed to $$(x_1, x_2, x_1^2, x_2^2, x_1x_2, \dots )$$
 and use Linear Regression with these variables. This is another fantastic area to explore. These type of methods are called [Kernel Methods](https://en.wikipedia.org/wiki/Kernel_method) and is widely used with SVMs. Check out [solving XOR gate using single perceptron](https://medium.com/@lucaspereira0612/solving-xor-with-a-single-perceptron-34539f395182).
 
 ##### Non-Linear Regression with Backpropagation
