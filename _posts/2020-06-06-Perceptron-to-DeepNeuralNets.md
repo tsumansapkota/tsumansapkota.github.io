@@ -21,7 +21,7 @@ This post is organized into four parts:
 [3. Multilayer Perceptron (1 hidden layer)](#multilayer-perceptron)   
 [4. Deep Neural Networks](#deep-neural-networks)   
 
-*Python (Jupyter) Notebook used for this post and to generate GIFs is on this [Github Repository](https://github.com/tsumansapkota/Blog_Post/tree/master/03_Neural_Network_History). You can also run the Notebook on [Google Collab](https://colab.research.google.com/github/tsumansapkota/Blog_Post/blob/master/03_Neural_Network_History/00_Early_days.ipynb)*
+*Python (Jupyter) Notebook used for this post and to generate GIFs is on this [Github Repository](https://github.com/tsumansapkota/Blog_Post/tree/master/04_Regression_MLP). You can also run the Notebook on [Google Collab](https://colab.research.google.com/github/tsumansapkota/Blog_Post/blob/master/04_Regression_MLP/00_Modifying_Perceptron-Animation.ipynb)*
 
 This is a lengthy post; brace yourself. Let us begin our journey.
 
