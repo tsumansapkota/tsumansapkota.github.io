@@ -32,7 +32,7 @@ We have covered a lot about [Perceptron on the previous post](/algorithm/2020/05
 
 We can see that the algorithm changes the decision boundary for each data point with an error. Since we will always have some error with such noisy dataset, the algorithm does not converge (find a final solution).    
 We can also see the Accuracy and Error keeps fluctuating. This is useful to compare with other methods.   
-We can guess that the fluctuations are due to optimizing for one data point at a time. What will happen if we update the train the function for the whole dataset?
+We can guess that the fluctuations are due to optimizing for one data point at a time. What will happen if we update the parameters of the function for the whole dataset?
 
 ###### Training Perceptron on full batch Dataset
 
@@ -57,9 +57,9 @@ We can visualize the learning of the Perceptron with batch update as follows.
 
 {% include figure.html image="/assets/post_images/perceptron-to-dnn/batch-perceptron-learning.gif" position="center" height="400" caption="Fig: Perceptron Batch Update on noisy dataset" %}
 
-We can see that the decision boundary is more stable and also gives more stable accuracy. It seems that we can do better learning using the batch update. Still, the problem is not fully solved.
+We can see that the decision boundary is more stable and also gives more stable accuracy. It seems that we can do better learning using the batch update. Still, the problem is not fully solved. We may decrease the learning rate over time to decrease the change in decision boundary.
 
-We can again guess what the problem is due to. The dataset does not have a clean decision boundary to make  100% sure classification. The points making error say that they are equally valid data points as the correctly classified data points.   
+We can again guess what the problem is due to. The dataset does not have a clean decision boundary to make  100% sure classification. The points making error are equally valid data points as the correctly classified data points. We can use fuzzy decision boundary, around which the classification is not certain.    
 We can incorporate probability into the classification to make room for uncertain(opposing) data points.
 
 ###### Training Perceptron with Probability
@@ -79,7 +79,7 @@ $$
 
 Probability 1, $$(\hat{y} = 1)$$, means that the data point belongs to class '1' and probability 0 means that the data point does not belong to class '1' (hence belongs to class '0'). The probability of 0.5 means the data point has 50/50 chance to be in class '0' or class '1'. Hence this point can be regarded as the decision boundary. We can use other threshold values for the decision boundary as well. In medical application, if the classifier predicts the probability of having cancer, we might want probability > 0.7 to be more certain about the diagnosis.
 
-Although we formulate the problem in terms of probability, we don't know the learning required for probability values. One solution is to sample to make a hard decision. This will predict noisy output around the decision boundary. The algorithm can then be simply trained as a (noisy) Perceptron.
+Although we formulate the problem in terms of probability, we don't know the learning required for probability values. One solution is to sample from probability to make a hard decision. This will predict noisy output around the decision boundary. The algorithm can then be simply trained as a (noisy) Perceptron.
  
 The training Algorithm for Noisy Perceptron is as follows.
 
@@ -101,20 +101,27 @@ We can visualize the Algorithm at the action as follows.
 
 {% include figure.html image="/assets/post_images/perceptron-to-dnn/sampling-perceptron-learning.gif" position="center" height="400" caption="Fig: Perceptron Batch Update with Sampling method" %}
 
-This is even better because we get slightly higher accuracy even with noise in the system. During the testing phase, we use a threshold function according to the required probability. Here, we use [Bernoulli Distribution](https://mathworld.wolfram.com/BernoulliDistribution.html) for sampling. This is because we have two possible cases: $$y=1$$ (Success) and $$y=0$$ (Failure).
+This is even better because we get slightly higher accuracy even with noise in the system. During the testing phase, we use a threshold function according to the required probability. Here, we use [Bernoulli Distribution](https://mathworld.wolfram.com/BernoulliDistribution.html) for sampling. This is because we have two possible cases: $$y=1$$ (Success) and $$y=0$$ (Failure). The point with probability 0.5 will be sampled as class 0 half of the time and as class 1 half of the time. But with this method, the decision boundary will never be stable. We can lower the learning rate to force it to be stable, but we want the algorithm itself to find stable decision boundary.
 
 The parameters of a probability distribution can be estimated by using [Maximum Likelihood Estimation (MLE)](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation) method. In statistics, maximum likelihood estimation is a method of estimating the parameters of a probability distribution by maximizing a likelihood function, so that under the assumed statistical model the observed data is most probable. This method will be discussed in the next topic. You may [skip the derivation of Logistic Regression](#training-logistic-regression-binary-classifier)
 
 ###### Logistic Regression (Derivation)
 
-Suppose that our data came by sampling from some probability distribution 
-$$\hat{y} \sim P(y=1|\boldsymbol{x})$$. 
-We don't exactly know the function generating the data. We know that the data have Bernoulli Distribution (because of having two classes). We don't know the function mapping 
-$$\boldsymbol{x}$$ to $$\hat{y}$$
-, but we have the samples (as our dataset $$\boldsymbol{X}$$).
+Suppose that our data came by sampling from some population of data points. If we assume that the data was generated by some underlying probability distribution, then we may try to estimate parameters of the distribution.   
+Suppose that $$y$$ came by sampling from some probability distribution with $$\boldsymbol{x}$$ as input(independent variable) and $$y$$ as outcome.
 
+$$y \sim P(y|\boldsymbol{x})$$  
 
-The Bernoulli distribution can be modelled by a simple function.
+Since we have two classes as output, we can assume that the data points were sampled from Bernoulli distribution.
+
+$$y \sim Bernoulli(p)$$   
+
+Here, $$p$$ is the underlying probability distribution over $$\boldsymbol{x}$$ that determines the outcome $$y$$. So, we can write, 
+
+$$p=P(y=1|\boldsymbol{x})$$
+
+Our goal is to model the $$p$$ given only the observation/dataset ($$\boldsymbol{X}, \boldsymbol{y}$$).   
+The Bernoulli distribution can be modelled by a simple function as follows.
 
 $$
 \begin{align}
@@ -125,7 +132,7 @@ z &= \boldsymbol{x^T}.\boldsymbol{w}\\
 $$
 
 $$
-or, P(y=1) = \hat{y} \tag{3}
+or, P(y=1) = \hat{y} \tag{2}
 $$
 
 Here, $$\sigma (z)$$ is the sigmoid function given by equation (1).   
@@ -134,7 +141,7 @@ Similarly,
 $$
 \begin{align}
 P(y=0) &= 1 - \sigma (z) \\
-&= 1 -\hat{y} \tag{4}
+&= 1 -\hat{y} \tag{3}
 \end{align}
 $$
 
@@ -142,7 +149,7 @@ The equations (3) and (4) can be written in a single formula as,
 
 $$P(y) = \hat{y}^y (1-\hat{y})^{(1-y)} \tag{4}$$
 
-Our goal is to output the correct probability value given the data. This means that we want to maximize the likelihood of the above function. Likelihood function measures how likely are the given data points to have come from the modelled probability distribution (equation 3 in our case).
+Our goal is to get highest probability,$$P(y)=1$$(correct prediction),for all $$y$$ in the dataset with our model $$\hat{y}$$.  We may not get highest probability but we can surely try our best to maximize it. The probability of all the data points to have come from the modeled distribution (equation 4) is called the likelihood. Hence, we want to maximize the likelihood of the above function.
 
 For each data point $$\boldsymbol{x_i}$$,
 
@@ -155,27 +162,27 @@ z_i &= \boldsymbol{x_i^T}.\boldsymbol{w} \tag{5}\\
 $$
 
 The likelihood function of 
-$$P(y_i=1|\boldsymbol{x_i};\boldsymbol{w})$$ 
+$$P(y_i|\boldsymbol{x_i};\boldsymbol{w})$$ 
 for all ($$\boldsymbol{x_i}, y_i$$) in dataset 
 $$(\boldsymbol{X}, \boldsymbol{y})$$ 
 is as follows:
 
 $$
 \begin{align}
-L(\boldsymbol{w}|\boldsymbol{X}; \boldsymbol{y}) &= P(\boldsymbol{y}|\boldsymbol{X};\boldsymbol{w})\\
+L(\boldsymbol{y}|\boldsymbol{X}; \boldsymbol{w}) &= P(\boldsymbol{y}|\boldsymbol{X};\boldsymbol{w})\\
 &= \prod_{i=0}^{N-1} P(y_i|\boldsymbol{x_i};\boldsymbol{w})\\
 &= \prod_{i=0}^{N-1} \hat{y_i}^{y_{i}} (1-\hat{y_i})^{(1-y_i)}\\
 \end{align}
 $$
 
 Since our goal is to maximize the likelihood function 
-$$L(\boldsymbol{w}|\boldsymbol{X})$$
+$$L(\boldsymbol{y}|\boldsymbol{X};\boldsymbol{w})$$
 , we will use calculus for this.
 
 $$
 \begin{align}
-\boldsymbol{w}^*  &= arg\max_{\boldsymbol{w}} L(\boldsymbol{w}|\boldsymbol{X}; \boldsymbol{y})\\
-&= arg\min_{\boldsymbol{w}} - \log L(\boldsymbol{w}|\boldsymbol{X}; \boldsymbol{y})
+\boldsymbol{w}^*  &= arg\max_{\boldsymbol{w}} L(\boldsymbol{y}|\boldsymbol{X};\boldsymbol{w})\\
+&= arg\min_{\boldsymbol{w}} - \log L(\boldsymbol{y}|\boldsymbol{X};\boldsymbol{w})
 \end{align}
 $$
 
@@ -183,7 +190,7 @@ Maximizing a function is equivalent to minimizing the negative log of the functi
 
 $$
 \begin{align}
--\log L(\boldsymbol{w}|\boldsymbol{X}; \boldsymbol{y}) &= - \sum_{i=0}^{N-1} \log(\hat{y_i}^{y_i}) + \log((1-\hat{y_i})^{(1-y_{i})}) \\
+-\log L(\boldsymbol{y}|\boldsymbol{X};\boldsymbol{w}) &= - \sum_{i=0}^{N-1} \log(\hat{y_i}^{y_i}) + \log((1-\hat{y_i})^{(1-y_{i})}) \\
  &= - \sum_{i=0}^{N-1} y_i \log\hat{y_i} + (1-y_{i}) \log(1-\hat{y_i}) \tag{7}
 \end{align}
 $$
@@ -194,7 +201,7 @@ If we take $$E_i = - y_i \log\hat{y_i} - (1-y_{i}) \log(1-\hat{y_i})$$ as error 
 
 $$
 \begin{align}
-E &= -\frac{1}{N} \log L(\boldsymbol{w}|\boldsymbol{X}; \boldsymbol{y}) \\
+E &= -\frac{1}{N} \log L(\boldsymbol{y}|\boldsymbol{X};\boldsymbol{w}) \\
   &= -\frac{1}{N} \sum_{i=0}^{N-1} y_i \log\hat{y_i} + (1-y_{i}) \log(1-\hat{y_i}) \tag{8}\\
   &= \frac{1}{N} \sum_{i=0}^{N-1} E_i
 \end{align}
@@ -241,7 +248,7 @@ $$
 \end{align}
 $$
 
-Combining equation these equations, we expand the equation (9) as follows.
+Substituting equation 11, 12, 13 in equation (10), we get:
 
 $$
 \begin{align}
@@ -291,7 +298,7 @@ If we use the linear activation function ($$f(x) = x$$) with $$E(\hat{y}, y)$$ =
 With $$f(x) = step(x)$$ and $$E(\hat{y}, y)$$ = Hinge Loss, we get Perceptron.
 Similarly, $$f(x) = \sigma(x)$$ and $$E(\hat{y}, y)$$ = Binary Cross Entropy, we get Logistic Regression.
 
-A question arises, what if we train with f(x)= sigmoid and $$E(\hat{y}, y)$$ = MSE. This is trying to solve the classification problem with a regression loss function. Let us try this to classify 1D data with Logistic Regression and with single layer Sigmoid-Neural Network.
+A question arises, what if we train with $$f(x)= \sigma(x)$$ and $$E(\hat{y}, y)$$ = MSE. This is trying to solve the classification problem with a regression loss function. Let us try this to classify 1D data with Logistic Regression and with single layer Sigmoid-Neural Network.
 
 {% include figure.html image="/assets/post_images/perceptron-to-dnn/logistic-regression-1d.gif" position="center" height="400" caption="Fig: 1D classification with Logistic Regression" %}
 
@@ -465,7 +472,7 @@ $$
 Here,  
 $$\boldsymbol{X} \in \mathbb{R}^{M \times I};$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$M$$ is the number of data points,   
 $$\boldsymbol{W_1} \in \mathbb{R}^{I \times H};$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$\boldsymbol{b_1} \in \mathbb{R}^{H};$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$\boldsymbol{Z_1} \in \mathbb{R}^{M \times H};$$   
-$$\boldsymbol{A_1} \in \mathbb{R}^{I \times H};$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$f(x)$$ is the Elementwise Activation-function;   
+$$\boldsymbol{A_1} \in \mathbb{R}^{M \times H};$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$f(x)$$ is the Elementwise Activation-function;   
 $$\boldsymbol{W_2} \in \mathbb{R}^{H \times O};$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$\boldsymbol{b_2} \in \mathbb{R}^{O};$$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$\boldsymbol{\hat{Y}} \in \mathbb{R}^{M \times O};$$   
 
 Backward propagation:
@@ -559,7 +566,7 @@ Deep learning term is famous these days. It is a set of established techniques t
 
 ##### Conclusion
 
-In this post, we started from Perceptron and trying to improve its capability and improved until we developed the Deep Neural Network. The actual development of Deep Neural Networks did not happen exactly the same way. Still, these steps help to develop the concept in a sequential manner. Each next step adds to the capability of the algorithm. Learning this way can help try different ideas at different stages of development. Learning the modern Deep Learning algorithms can be too much for newcomers, too abstract and might be discouraging. This post aims to help readers understand the basic Neural Network algorithm and move onwards toward modern Deep Learning Techniques. Check out [Linear Regression](/algorithm/2019/10/02/Linear-Regression/) and [Polynomial Regression](/algorithm/2019/11/04/Polynomial-Regression/) to understand the basic of regresion.
+In this post, we started from Perceptron, trying to improve its capability and improved until we developed the Deep Neural Network. The actual development of Deep Neural Networks did not happen exactly the same way. Still, these steps help to develop the concept in a sequential manner. Each next step adds to the capability of the algorithm. Learning this way can help try different ideas at different stages of development. Learning the modern Deep Learning algorithms can be too much for newcomers, too abstract and might be discouraging. This post aims to help readers understand the basic Neural Network algorithm and move onwards toward modern Deep Learning Techniques. Check out [Linear Regression](/algorithm/2019/10/02/Linear-Regression/) and [Polynomial Regression](/algorithm/2019/11/04/Polynomial-Regression/) to understand the basic of regresion.
 
 Please feel free to comment on the post, ask questions or give feedback.
 
