@@ -6,7 +6,7 @@ excerpt: |
   A Journey From Perceptron to Deep Neural Networks in a sequential fashion. Start with Perceptron, move to Logistic Regression, Single Layer Neural Network, Multilayer Perceptron (1 hidden layer) and finally to Deep Neural Network. Understand the algorithms sequentially along with visualization and math.
 feature_text: | 
   ##### Perceptron to Deep-Neural-Network 
-  ###### The Road Less Travelled
+  ###### The Road Less Traveled
 feature_image: "/assets/post_images/perceptron-to-dnn/cover-NLR.svg"
 image: "/assets/post_images/perceptron-to-dnn/feature-NLR.svg"
 ---
