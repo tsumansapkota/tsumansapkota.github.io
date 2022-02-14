@@ -193,7 +193,7 @@ The problem with Perceptron is that it cannot find a solution (converge) if the 
 
 {% include figure.html image="/assets/post_images/neural-network-history/Perceptron_learning_noisy.gif" position="center" height="400" caption="Fig: Perceptron failing to converge on noisy Dataset" %}
 
-{% include figure.html image="/assets/post_images/neural-network-history/Perceptron_XOR.gif" position="center" height="400" caption="Fig: Perceptron gailing to learn XOR Gate" %}
+{% include figure.html image="/assets/post_images/neural-network-history/Perceptron_XOR.gif" position="center" height="400" caption="Fig: Perceptron failing to learn XOR Gate" %}
 
 We can see that the Perceptron algorithm does not converge for linearly inseparable data. In the noisy dataset, we can draw a straight line despite the noise to get the most probable decision boundary. 
 In the case of XOR Gate, we cannot draw a straight line as the decision boundary. The problem cannot be solved by a linear classifier. This was pointed out by Marvin Minsky and Seymour Papert in their book Perceptron in 1969. They also showed that multiple layers of perceptron can be used to model XOR Gate and other linearly inseparable functions.
