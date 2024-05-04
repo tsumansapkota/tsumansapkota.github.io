@@ -218,11 +218,11 @@ In our code, we simply search for a piece with the highest error, and if the err
 
 Iteratively fixing PWLF, adding and removing break points allows us to approximate a 1D function with high non-linearity starting just with 1 piece (or a linear function). We can visualize the function approximation as follows, where we maintain the PWLF problems every N steps.
 
-{% include figure.html image="/assets/post_images/dynamic-1d-pwlf/dynamic-1D-pwlf-small.gif" position="center" height="400" caption="Fig: Method to determine if certain break points can be removed" %}
+{% include figure.html image="/assets/post_images/dynamic-1d-pwlf/dynamic-1D-pwlf-small.gif" position="center" height="400" caption="Fig: Visualizing training of dynamic 1D linear spline" %}
 
 We also visualize a more non-linear function extending to larger range as follows:
 
-{% include figure.html image="/assets/post_images/dynamic-1d-pwlf/dynamic-1D-pwlf-big.gif" position="center" height="400" caption="Fig: Method to determine if certain break points can be removed" %}
+{% include figure.html image="/assets/post_images/dynamic-1d-pwlf/dynamic-1D-pwlf-big.gif" position="center" height="400" caption="Fig: Visualizing training of dynamic 1D linear spline" %}
 
 The big limitation of our work is that this is just limited to 1D, i.e. it does not generalize to higher dimensions. We tried to replace away linear connection in MLP with PWLF and it works for small networks, however, it seems to get stuck at local minima for a large number of connections. Moreover, our implementation is not highly optimized, hence works slowly when the connections increase.
 
@@ -230,7 +230,7 @@ The big limitation of our work is that this is just limited to 1D, i.e. it does 
 
 We may generalize a piece (a line in 1D) to higher dimensions: triangle in 2D, tetrahedron in 3D and so on (called [simplex](https://en.wikipedia.org/wiki/Simplex)). The figure below shows how I tried to break each triangle into subparts for PWLF in 2D.
 
-{% include figure.html image="/assets/post_images/dynamic-1d-pwlf/dynamic-2D-adding-pieces.gif" position="center" height="400" caption="Fig: Method to determine if certain break points can be removed" %}
+{% include figure.html image="/assets/post_images/dynamic-1d-pwlf/dynamic-2D-adding-pieces.gif" position="center" height="400" caption="Fig: Visualizing space subdivision of 2D spline/triangle." %}
 
 Although I couldn't make it work for regression and classification problems and my implementation is not efficient. I believe triangular mesh or mesh with simplexes ([simplicial complex](https://en.wikipedia.org/wiki/Simplicial_complex)) could work for regression and classification in high dimensions. Moreover, simplices are very important in 3D graphics, convex hulls, topology and more. Hope you study additional resources on this.
 
