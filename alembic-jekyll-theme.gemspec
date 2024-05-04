@@ -1,4 +1,8 @@
 # coding: utf-8
+## successfully working with 
+# ruby 2.4.10p364 (2020-03-31 revision 67879) [x86_64-linux]
+# gem 2.6.14.4
+# Bundler version 2.1.4
 
 Gem::Specification.new do |spec|
 spec.name          = "alembic-jekyll-theme"
