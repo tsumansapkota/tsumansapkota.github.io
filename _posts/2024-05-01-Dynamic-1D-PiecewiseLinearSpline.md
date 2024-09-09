@@ -8,8 +8,8 @@ excerpt: |
 feature_text: | 
   ##### Dynamic 1D Piecewise Linear Spline 
   Research journey into creating dynamic 1D function approximation 
-feature_image: "/assets/post_images/dynamic-1d-pwlf/cover-piecewise-1d.svg"
-image: "/assets/post_images/perceptron-to-dnn/feature-piecewise-1d.svg"
+feature_image: "/assets/post_images/dynamic-1d-pwlf/feature-piecewise-1d.svg"
+image: "/assets/post_images/perceptron-to-dnn/cover-piecewise-1d.png"
 ---
 
 
@@ -177,26 +177,19 @@ $$
 I have written the equation in compact and generalized it to all indexes. *If this is difficult for you, please try to derive using 2 pieces for which there are 3 control points.*
 
 ###### Visualizing Fitting of function
-
 We simply use SGD optimizer on the parameters and train it on a toy 1D regression problem *as we did for earlier algorithms*. The training is done with 4 pieces (5 break points), which can be observed as follows:
 
 {% include figure.html image="/assets/post_images/dynamic-1d-pwlf/fixed-1D-pwlf.gif" position="center" height="400" caption="Fig: Visualizing training of Linear Spline Function Approximator." %}
 
-
 ###### Problems observed and solved.
-
 We faced multiple problems during the training experiments and used different tricks to make it more stable. Next, we go into the problems and how we use heuristics to fix the problems to create a robust 1D PWLF.
 
-
-
 **1. Limit edge break points to be outside input samples:**
-
 The first problem that we faced is that when the control points are updated, the x-value of the edge control points lies inside the dataset, i.e. some data points do not lie inside the spline. Hence, we check if the first($$i=0$$) and last control point($$i=m$$) are outside the data range and enforce it every update. 
 
-**2. Internal break point outside data points:** In many cases, the multiple break points lie outside the region containing data samples. This creates unused pieces which are not important for prediction, rather, we devise a method to detect if there are no points in a piece and remove it.
+**2. Internal break point outside data points:** In many cases, the multiple break points lie outside the region containing data samples. This creates unused pieces which are not important for prediction, rather, we detect if there are pieces with no data points and remove them.
 
 **3. Combine linear pieces (or remove unuseful break point):**
-
 There are cases when the 3 consecutive break points create an almost linear spline (with very small non-linearity). In the figure below, we can observe that the spline $$acb$$ is highly non-linear, however, the spline $$adb$$ has little non-linearity. In such a case, we can remove the control point $$d$$ and directly connect $$ab$$. 
 
 {% include figure.html image="/assets/post_images/dynamic-1d-pwlf/02_merging_pieces_removing_points.svg" position="center" height="400" caption="Fig: Method to determine if certain break points can be removed" %}
@@ -204,18 +197,14 @@ There are cases when the 3 consecutive break points create an almost linear spli
 The amount of non-linearity can be defined using the area of the triangle defined by 3 consecutive points. If the area is lower than a certain threshold (0.01 in below experiments), then we remove such control points.
 
 **4. Combine very small pieces (or remove close break point):**
-
 If the x-coordinate of a control point is very close to another control point, then such a piece should be removed, it might cause a piece to jump abruptly and also under-utilize the control points. We simply set a threshold (0.001 for the below experiments) for the gap between pieces, below which one of the control points is removed.
 
 **5. Add new piece (or break point):**
-
 If the function is not approximating the dataset properly, we may have a lower number of splines than required to perfectly fit the dataset. Hence, we need a mechanism to add a new piece or a break point to the function.
 In our code, we simply search for a piece with the highest error, and if the error is greater than the threshold (0.0001 for the below experiments), we proceed to add a piece at some random control point inside the bounding control points. We initialize the y-value of the point to be the output of the spline itself, hence the function is not changed even after addition, however, now it can be optimized to fit the dataset better. 
 
 
-
 ##### Dynamic 1D Piecewise Function
-
 Iteratively fixing PWLF, adding and removing break points allows us to approximate a 1D function with high non-linearity starting just with 1 piece (or a linear function). We can visualize the function approximation as follows, where we maintain the PWLF problems every N steps.
 
 {% include figure.html image="/assets/post_images/dynamic-1d-pwlf/dynamic-1D-pwlf-small.gif" position="center" height="400" caption="Fig: Visualizing training of dynamic 1D linear spline" %}
@@ -227,7 +216,6 @@ We also visualize a more non-linear function extending to larger range as follow
 The big limitation of our work is that this is just limited to 1D, i.e. it does not generalize to higher dimensions. We tried to replace away linear connection in MLP with PWLF and it works for small networks, however, it seems to get stuck at local minima for a large number of connections. Moreover, our implementation is not highly optimized, hence works slowly when the connections increase.
 
 ###### Exploring PWLF on nD
-
 We may generalize a piece (a line in 1D) to higher dimensions: triangle in 2D, tetrahedron in 3D and so on (called [simplex](https://en.wikipedia.org/wiki/Simplex)). The figure below shows how I tried to break each triangle into subparts for PWLF in 2D.
 
 {% include figure.html image="/assets/post_images/dynamic-1d-pwlf/dynamic-2D-adding-pieces.gif" position="center" height="400" caption="Fig: Visualizing space subdivision of 2D spline/triangle." %}
@@ -236,7 +224,6 @@ Although I couldn't make it work for regression and classification problems and 
 
 
 ##### Conclusion
-
 In this post, we started by defining a single piece, deriving its gradients, and extending it to multiple pieces to create 1D PWLF. We later solved multiple problems to create a dynamic PWLF which could adjust its capacity (or the number of break points) according to the complexity of the input data.
 
 Moreover, the way the piecewise linear spline function is computed is very intuitive and can create a highly non-linear function with each break point having a local effect on the overall function. 
