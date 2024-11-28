@@ -4,6 +4,8 @@
 # gem 2.6.14.4
 # Bundler version 2.1.4
 
+## installing ruby-dev and bundle install with sudo solved issues
+
 Gem::Specification.new do |spec|
 spec.name          = "alembic-jekyll-theme"
 spec.version       = "3.1.0"

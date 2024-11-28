@@ -21,7 +21,7 @@ I am excited to share this with you as it was one of the initial works I took up
 
 ##### Piecewise Linear Spline
 
-There are various types of splines as shown in Figure above. We are concerned only about linear splines which create PieceWise Linear Function (PWLF). For simplicity, we would start with just one piece, derive the gradients, and later extend to multiple pieces.
+There are various types of splines as shown in Figure above. We are concerned only about linear splines which creates PieceWise Linear Function (PWLF). For simplicity, we would start with just one piece, derive the gradients, and later extend to multiple pieces.
 
 
 A piecewise linear function with only 1 piece connecting points $$(x_0, y_0)$$ and $$(x_1, y_1)$$ can be defined as follows:
@@ -37,7 +37,7 @@ $$
 
 Here, $$y$$ is the prediction/output. If we consider $$t$$ to be the target output, then the MSE loss ($$E$$) can be defined as 
 
-$$E=\frac{1}{n} \sum_{i=0}^{n-1} (y^{(i)} - t^{(i)})^2 $$
+$$E=\frac{1}{2n} \sum_{i=0}^{n-1} (y^{(i)} - t^{(i)})^2 $$
 
 where, $$t^{(i)}$$ is the target of $$i^{th}$$ element in the dataset containing $$n$$ items. The graident with respect to output is $$\frac{dE}{dy^{(i)}} = y^{(i)} - t^{(i)}$$. For simplicity of understanding, we only take one sample $$x$$, its output $$y=f(x)$$, target $$t$$, then the gradient with respect to $$y$$ is given as:   
 
@@ -205,7 +205,7 @@ In our code, we simply search for a piece with the highest error, and if the err
 
 
 ##### Dynamic 1D Piecewise Function
-Iteratively fixing PWLF, adding and removing break points allows us to approximate a 1D function with high non-linearity starting just with 1 piece (or a linear function). We can visualize the function approximation as follows, where we maintain the PWLF problems every N steps.
+Iteratively fixing PWLF, adding and removing break points allows us to approximate a 1D function with high non-linearity starting just with 1 piece (or a linear function). We can visualize the function approximation as follows, where we maintain the PWLF problems every N *(=100)* steps.
 
 {% include figure.html image="/assets/post_images/dynamic-1d-pwlf/dynamic-1D-pwlf-small.gif" position="center" height="400" caption="Fig: Visualizing training of dynamic 1D linear spline" %}
 

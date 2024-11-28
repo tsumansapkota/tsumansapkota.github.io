@@ -97,7 +97,7 @@ baseurl: ""
 repo: "https://github.com/tsumansapkota/tsumansapkota.github.io"
 email: "natokpas@gmail.com"
 disqus: "tsumansapkota-github-io" # Blog post comments, uncomment the option and set the site ID from your Disqus account
-# google_analytics: 'UA-150637206-1'
+google_analytics: 'UA-150637206-1'
 # google_analytics_anonymize_ip: ''
 # service_worker: false # Will turn off the service worker if set to false
 css_inline: true # Will insert all styles into a single <style> block in the <head> element and remove the style <link> reference
