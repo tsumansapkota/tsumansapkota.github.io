@@ -40,8 +40,9 @@ We also checked what slight different prompt produces:
 <code class="monospace-bold">The capital city of Nepal is located in</code> `the Himalayas, and is home to the...`   
 <code class="monospace-bold">The capital city of Nepal is</code> `the capital of the Nepalese state of Nepal...`   
 <code class="monospace-bold">The capital city of Nepal is in</code> `the midst of a massive earthquake, which has killed...`   
+<code class="monospace-bold">The capital of Nepal lies in the city of</code> `Kathmandu, which is home to the largest...`
 
-This inability to get desired output “``` Kathmandu```” was what motivated us to change the output using some sort of memory. However, we should not make changes to other facts or prompts while doing so. 
+This inability to consistently get desired output “``` Kathmandu```” across prompts was what motivated us to change the output using some sort of memory. However, we should not make changes to other facts or prompts while doing so. 
 
 ###### Choosing the target output
 We want the output to produce “``` Kathmandu```” which is tokenized as “``` Kath```”, “```mand```”, “```u```”. To make the problem simpler, we only take the token “``` Kath```” as the target output of the prompt. 
